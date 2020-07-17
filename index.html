@@ -1,0 +1,41 @@
+<html>
+  <body>
+    <h3 id='error'></h3>
+    <p id='message'></p>
+    <input type="text" placeholder="User ID" id="user-id" />
+    <input type="text" placeholder="Channel ID" id="channel-id" />
+    <input type="button" placeholder="Message" value="Connect" onclick="connect()" />
+    <input type="text" id="input" />
+    <input type="button" value="Send" onclick="send()" />
+    <script src="websocket.js"></script>
+    <script>
+      var ws = new WebsocketService();
+      var id = "";
+      var channel = "";
+      function message(res){
+        document.getElementById("message").innerHTML = `${res.from}: ${res.message}`;      
+      }
+
+      function error(error){
+        document.getElementById("error").innerHTML = error;      
+      }
+
+      function send(){
+        var data = document.getElementById("input").value;
+        ws.send(data);
+      }
+
+      function close(){
+        setTimeout(function () { ws.init(id, channel, message, error, close); }, 2000);
+      }
+
+      function connect(){
+        id = document.getElementById("user-id").value;
+        channel = document.getElementById("channel-id").value;
+        ws.init(id, channel, message, error, close);
+      }
+
+
+    </script>
+  </body>
+</html>

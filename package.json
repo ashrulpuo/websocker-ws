@@ -1,0 +1,17 @@
+{
+  "name": "rekamy-realtime",
+  "version": "0.0.0",
+  "engines": {
+    "node": "6.11.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bufferutil": "3.0.3",
+    "express": "4.16.2",
+    "utf-8-validate": "3.0.4",
+    "websocket": "1.0.25",
+    "ws": "3.3.1"
+  }
+}
