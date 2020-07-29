@@ -5,7 +5,8 @@
     "node": "6.11.2"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "prod": "pm2 start --name rekamy-realtime server.js"
   },
   "dependencies": {
     "bufferutil": "3.0.3",
